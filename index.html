@@ -343,23 +343,24 @@ section { padding: 88px 20px; }
 #price .section-tag { color: #fbbf24; }
 #price .section-h2 { color: white; }
 
-.price-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 44px; align-items: start; }
+.price-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 44px; align-items: stretch; }
 .price-card {
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 26px; padding: 36px; transition: transform 0.3s, background 0.3s; position: relative;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 26px; padding: 40px 36px; transition: transform 0.3s, background 0.3s; position: relative;
+  display: flex; flex-direction: column;
 }
-.price-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.07); }
+.price-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.1); }
 .price-card.best {
   padding: 2px; border: none; background: none;
-  transform: scale(1.04); filter: drop-shadow(0 24px 48px rgba(0,0,0,0.45));
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.45));
 }
 .price-card.best::before {
   content: ''; position: absolute; inset: 0; border-radius: 28px;
   background: linear-gradient(135deg, #fbbf24, #f59e0b, #2563eb, #3b82f6, #fbbf24);
   background-size: 300%; animation: gradient-border-anim 4s ease infinite; z-index: -1;
 }
-.price-card.best:hover { transform: scale(1.04) translateY(-5px); }
-.best-inner { background: white; color: #1a1a2e; border-radius: 24px; padding: 36px; height: 100%; }
+.price-card.best:hover { transform: translateY(-5px); }
+.best-inner { background: white; color: #1a1a2e; border-radius: 24px; padding: 40px 36px; height: 100%; display: flex; flex-direction: column; }
 .best-badge {
   display: inline-block; background: linear-gradient(135deg, #f59e0b, #fbbf24);
   color: #1a1a1a; padding: 4px 18px; border-radius: 50px; font-size: 12px; font-weight: 800; margin-bottom: 18px;
@@ -840,9 +841,9 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
       <h2>10年後の自分に、今日投資する。</h2>
       <p>まずは無料イベントだけでもご参加ください。<br>参加費無料・入会義務なし。疑問はすべて当日解消できます。</p>
       <div style="display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:8px;">
-        <img src="assets/kazu-char-guide2.png" class="char-img" alt="" style="width:100px;height:100px;transform:scaleX(-1);">
+        <img src="assets/kazu-char-guide2.png" class="char-img" alt="" style="width:100px;height:100px;">
         <a href="form.html" class="btn-primary large">無料イベントに参加する</a>
-        <img src="assets/kazu-char-guide.png" class="char-img" alt="" style="width:100px;height:100px;">
+        <img src="assets/kazu-char-guide2.png" class="char-img" alt="" style="width:100px;height:100px;transform:scaleX(-1);">
       </div>
       <div class="note">※ 参加費無料 · 入会の義務はありません · 14日間返金保証</div>
     </div>
