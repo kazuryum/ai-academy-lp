@@ -47,8 +47,11 @@ nav.scrolled { padding: 10px 28px; }
 /* ヒーロー */
 #hero {
   min-height: 100vh; display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(160deg, rgba(4,4,18,0.84) 0%, rgba(8,20,60,0.72) 45%, rgba(20,60,150,0.58) 100%),
-              url('assets/lp-hero-impact.png') center/cover no-repeat;
+  background-image: linear-gradient(160deg, rgba(4,4,18,0.84) 0%, rgba(8,20,60,0.72) 45%, rgba(20,60,150,0.58) 100%),
+              url('assets/lp-hero-impact.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: white; text-align: center; padding: 120px 20px 80px;
   position: relative; overflow: hidden;
 }
@@ -451,6 +454,7 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
 
 /* スマホ */
 @media (max-width: 640px) {
+  #hero { background-position: 22% center; }
   nav { padding: 12px 16px; }
   .nav-logo { font-size: 13px; }
   .nav-cta { padding: 10px 16px; font-size: 12px; min-height: 40px; }
