@@ -123,6 +123,28 @@ section { padding: 88px 20px; }
 .section-h2 { font-size: clamp(24px, 4vw, 42px); font-weight: 900; line-height: 1.35; margin-bottom: 16px; }
 .section-lead { font-size: 17px; color: #64748b; line-height: 1.9; margin-bottom: 52px; }
 
+/* キャラクター画像 */
+.char-float {
+  position: relative; display: inline-block;
+}
+.char-img { width: 120px; height: 120px; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.12)); }
+.char-img.large { width: 160px; height: 160px; }
+.char-bubble {
+  position: absolute; background: white; border-radius: 16px; padding: 10px 14px;
+  font-size: 13px; font-weight: 700; color: #1e3a8a; white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  top: -20px; left: 50%; transform: translateX(-50%);
+}
+.char-bubble::after {
+  content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
+  border: 6px solid transparent; border-top-color: white; border-bottom: none;
+}
+
+/* キャラクターとコンテンツの横並び */
+.char-layout { display: flex; gap: 32px; align-items: center; }
+.char-layout .char-side { flex-shrink: 0; text-align: center; }
+.char-layout .content-side { flex: 1; }
+
 /* ====== 共感セクション ====== */
 #empathy { background: #f8fafc; }
 .empathy-intro { text-align: center; font-size: clamp(20px, 3vw, 30px); font-weight: 900; color: #1e3a8a; margin-bottom: 40px; line-height: 1.5; }
@@ -412,6 +434,13 @@ section { padding: 88px 20px; }
 /* フッター */
 footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; padding: 32px 20px; font-size: 13px; }
 
+/* キャラクターレイアウト スマホ */
+@media (max-width: 640px) {
+  .char-layout { flex-direction: column; align-items: center; }
+  .char-img { width: 90px; height: 90px; }
+  .char-img.large { width: 110px; height: 110px; }
+}
+
 /* スマホ */
 @media (max-width: 640px) {
   nav { padding: 12px 16px; }
@@ -478,6 +507,12 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
 <!-- 共感セクション（NEW） -->
 <section id="empathy">
   <div class="container">
+    <div style="text-align:center;margin-bottom:24px;" class="fade-up">
+      <div class="char-float" style="display:inline-block;">
+        <div class="char-bubble">あなたはどれかあてはまりますか？</div>
+        <img src="assets/kazu-char-think.png" class="char-img large" alt="かずさんキャラクター">
+      </div>
+    </div>
     <p class="empathy-intro fade-up">こんなお悩み、<span>ありませんか？</span></p>
     <div class="worry-grid">
       <div class="worry-card fade-up delay-1"><span class="worry-icon">😔</span>ChatGPTは使っているのに、仕事量が全然変わっていない</div>
@@ -569,8 +604,13 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
       </div>
     </div>
     <div class="result-card fade-up">
-      <h3>🔥 今から変えれば、半年で元が取れる計算です</h3>
-      <p>年間87万円超の機会損失がなくなれば、<strong>講座代は6ヶ月以内に回収できます。</strong><br>これは投資であり、保険です。</p>
+      <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center;">
+        <img src="assets/kazu-char-surprise.png" class="char-img" alt="" style="width:100px;height:100px;flex-shrink:0;">
+        <div>
+          <h3>🔥 今から変えれば、半年で元が取れる計算です</h3>
+          <p>年間87万円超の機会損失がなくなれば、<strong>講座代は6ヶ月以内に回収できます。</strong><br>これは投資であり、保険です。</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -578,6 +618,9 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
 <!-- なぜ無料？（NEW） -->
 <div id="why-free">
   <div class="why-free-inner">
+    <div class="fade-up" style="margin-bottom:24px;">
+      <img src="assets/kazu-lecture.png" alt="かずさん講演" style="width:200px;height:200px;object-fit:cover;border-radius:50%;box-shadow:0 8px 32px rgba(0,0,0,0.15);border:4px solid #fbbf24;">
+    </div>
     <h2 class="fade-up">なぜ<span>無料</span>で開催するのか？</h2>
     <p class="fade-up delay-1">「無料なんて、どうせ売り込まれるんでしょ？」<br>そう思う気持ち、よくわかります。</p>
     <p class="fade-up delay-2">
@@ -605,7 +648,9 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
 
     <div class="profile-wrap fade-up">
       <div class="profile-card">
-        <div class="profile-avatar">👨‍💼</div>
+        <div class="profile-avatar" style="background:none;box-shadow:none;">
+          <img src="assets/kazusan.png" alt="松尾和彦" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+        </div>
         <div class="profile-info">
           <h3>松尾 和彦（かずさん）</h3>
           <div class="profile-title">AI活用コンサルタント / nicopan school 代表 / MBA取得</div>
@@ -794,7 +839,11 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
       <div class="urgency">⚡ 1期生の残席はわずかです</div>
       <h2>10年後の自分に、今日投資する。</h2>
       <p>まずは無料イベントだけでもご参加ください。<br>参加費無料・入会義務なし。疑問はすべて当日解消できます。</p>
-      <a href="form.html" class="btn-primary large">無料イベントに参加する</a>
+      <div style="display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:8px;">
+        <img src="assets/kazu-char-guide2.png" class="char-img" alt="" style="width:100px;height:100px;transform:scaleX(-1);">
+        <a href="form.html" class="btn-primary large">無料イベントに参加する</a>
+        <img src="assets/kazu-char-guide.png" class="char-img" alt="" style="width:100px;height:100px;">
+      </div>
       <div class="note">※ 参加費無料 · 入会の義務はありません · 14日間返金保証</div>
     </div>
   </div>
