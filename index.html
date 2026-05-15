@@ -96,13 +96,13 @@ nav.scrolled { padding: 10px 28px; }
 .btn-primary::after { content: '→'; font-size: 1.2em; }
 .btn-primary.large { padding: 20px 52px; font-size: clamp(17px, 2.2vw, 21px); }
 
-.hero-note { margin-top: 16px; font-size: 13px; opacity: 0.45; }
+.hero-note { margin-top: 16px; font-size: 13px; opacity: 0.65; }
 .hero-stats { display: flex; justify-content: center; margin-top: 60px; flex-wrap: wrap; }
 .hero-stat { text-align: center; padding: 0 28px; }
 .hero-stat strong { display: block; font-size: clamp(22px, 4vw, 34px); font-weight: 900; color: #fbbf24; }
 .hero-stat span { font-size: 12px; opacity: 0.55; letter-spacing: 1px; }
 .hero-stat-divider { width: 1px; background: rgba(255,255,255,0.12); }
-.scroll-down { margin-top: 64px; opacity: 0.35; font-size: 12px; letter-spacing: 2px; animation: bounce 2s infinite; }
+.scroll-down { margin-top: 64px; opacity: 0.55; font-size: 12px; letter-spacing: 2px; animation: bounce 2s infinite; }
 @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
 
 /* フェードイン */
@@ -398,7 +398,7 @@ section { padding: 88px 20px; }
 .flow-step:not(:last-child)::after { content: '→'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.25); font-size: 16px; }
 .flow-n { color: #fbbf24; font-size: 10px; font-weight: 800; letter-spacing: 2px; margin-bottom: 10px; }
 .flow-step h4 { font-size: 13px; font-weight: 800; margin-bottom: 6px; }
-.flow-step p { font-size: 12px; opacity: 0.55; line-height: 1.6; }
+.flow-step p { font-size: 13px; opacity: 0.7; line-height: 1.6; }
 
 /* FAQ */
 .faq-wrap { margin-bottom: 52px; }
@@ -442,11 +442,18 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
   .char-img.large { width: 110px; height: 110px; }
 }
 
+/* タブレット */
+@media (max-width: 768px) {
+  .apply-flow { grid-template-columns: 1fr 1fr; }
+  .road-steps { grid-template-columns: 1fr; }
+  .final-cta-char { display: none; }
+}
+
 /* スマホ */
 @media (max-width: 640px) {
   nav { padding: 12px 16px; }
   .nav-logo { font-size: 13px; }
-  .nav-cta { padding: 8px 14px; font-size: 12px; }
+  .nav-cta { padding: 10px 16px; font-size: 12px; min-height: 40px; }
   .hero-stat { padding: 0 14px; }
   .hero-stat-divider { display: none; }
   .vs-wrap, .compare-cards, .price-cards, .road-steps { grid-template-columns: 1fr; }
@@ -462,6 +469,13 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
   .voice-before-after { flex-direction: column; }
   .voice-arrow { display: none; }
   .worry-grid { grid-template-columns: 1fr; }
+  .final-cta-char { display: none; }
+}
+
+/* アクセシビリティ：動作軽減設定 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .fade-up { opacity: 1; transform: none; }
 }
 </style>
 </head>
@@ -478,7 +492,7 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
   <div class="hero-glow glow-1"></div>
   <div class="hero-glow glow-2"></div>
   <div class="hero-inner">
-    <div class="hero-badge">2025年 第1期生 限定募集 · 残席わずか</div>
+    <div class="hero-badge">2026年 第1期生 限定募集 · 残り定員わずか</div>
     <h1 class="hero-h1">
       <span class="gold">1,000万円分</span>の余白を<br>
       <span class="underline">AIで作りませんか？</span>
@@ -491,7 +505,7 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
       あなたの「いつか」を、今日から動かします。
     </p>
     <a href="form.html" class="btn-primary large">無料イベントに参加する</a>
-    <div class="hero-note">※ 参加費無料 · 入会義務なし · いつでも退会できます</div>
+    <div class="hero-note">※ オンライン開催（Zoom）· 所要約90分 · 参加費無料 · 入会の義務なし · キャンセル自由</div>
     <div class="hero-stats">
       <div class="hero-stat"><strong>6ヶ月</strong><span>実践プログラム</span></div>
       <div class="hero-stat-divider"></div>
@@ -616,30 +630,6 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
   </div>
 </section>
 
-<!-- なぜ無料？（NEW） -->
-<div id="why-free">
-  <div class="why-free-inner">
-    <div class="fade-up" style="margin-bottom:24px;">
-      <img src="assets/kazu-lecture.png" alt="かずさん講演" style="width:200px;height:200px;object-fit:cover;border-radius:50%;box-shadow:0 8px 32px rgba(0,0,0,0.15);border:4px solid #fbbf24;">
-    </div>
-    <h2 class="fade-up">なぜ<span>無料</span>で開催するのか？</h2>
-    <p class="fade-up delay-1">「無料なんて、どうせ売り込まれるんでしょ？」<br>そう思う気持ち、よくわかります。</p>
-    <p class="fade-up delay-2">
-      このイベントで押し売りは一切しません。<br>
-      <strong>本当のAI活用を体験してもらい、「学びたい」と思ってくれた人だけに</strong>コースをご案内します。<br><br>
-      無理に入会してもらっても意味がないからです。<br>
-      <strong>「来てよかった」</strong>と思ってもらえるイベントにすることが、一番の目的です。
-    </p>
-  </div>
-</div>
-
-<!-- 中間CTA -->
-<div class="mid-cta">
-  <h2>まずは無料イベントで体験してみてください</h2>
-  <p>参加費無料・入会義務なし。疑問はすべて当日解消できます。</p>
-  <a href="form.html" class="btn-primary">無料イベントに参加する</a>
-</div>
-
 <!-- プログラム -->
 <section id="program">
   <div class="container">
@@ -669,7 +659,7 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
       <div class="feat-card fade-up delay-2">
         <div class="feat-icon">🤝</div>
         <h3>週1回 共創発表会（全24回）</h3>
-        <p>参加者が実際に試したAI活用事例を発表し合う場。「恩送り」の文化で全員の学びが全員に還元。一人で学ぶより何倍も速く成長できます。</p>
+        <p>参加者が実際に試したAI活用事例を発表し合う場。「恩送り」（学んだことを次の人へ贈る）の文化で全員の学びが全員に還元。一人で学ぶより何倍も速く成長できます。</p>
       </div>
       <div class="feat-card fade-up delay-3">
         <div class="feat-icon">🔧</div>
@@ -705,8 +695,8 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
 <section id="voices">
   <div class="container">
     <div class="section-tag fade-up">VOICE</div>
-    <h2 class="section-h2 fade-up delay-1">参加者のビフォー・アフター</h2>
-    <p class="section-lead fade-up delay-2">「来てよかった」という声が一番の励みです。</p>
+    <h2 class="section-h2 fade-up delay-1">無料体験会 参加者の声</h2>
+    <p class="section-lead fade-up delay-2">過去の無料体験会・ワークショップに参加された方のビフォー・アフターです。</p>
     <div class="voices">
       <div class="voice-card fade-up delay-1">
         <div class="voice-stars">★★★★★</div>
@@ -729,17 +719,50 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
         <div class="voice-meta">30代 / 個人事業主 / Mさん</div>
       </div>
       <div class="voice-card fade-up delay-3">
-        <div class="voice-stars">★★★★★</div>
+        <div class="voice-stars">★★★★☆</div>
         <div class="voice-before-after">
           <div class="voice-before">孤独な独学</div>
           <div class="voice-arrow">→</div>
           <div class="voice-after">仲間と爆速成長</div>
         </div>
-        <p class="voice-text">「共創発表会が想像以上に良かった。他の人の活用事例を聞くだけでアイデアが湧いてくる。コミュニティの力を実感しました。」</p>
-        <div class="voice-meta">50代 / 経営者 / Tさん</div>
+        <p class="voice-text">「最初は半信半疑でしたが、共創発表会が想像以上に良かった。他の人の活用事例を聞くだけでアイデアが湧いてくる。コミュニティの力を実感しました。」</p>
+        <div class="voice-meta">50代 / 経営者 / T.K.さん ※本人許可のもと掲載</div>
       </div>
     </div>
   </div>
+</section>
+
+<!-- なぜ無料？ -->
+<section id="why-free">
+  <div class="why-free-inner">
+    <div class="fade-up" style="margin-bottom:24px;">
+      <img src="assets/kazu-lecture.png" alt="かずさん講演" style="width:200px;height:200px;object-fit:cover;object-position:top center;border-radius:50%;box-shadow:0 8px 32px rgba(0,0,0,0.15);border:4px solid #fbbf24;">
+    </div>
+    <h2 class="fade-up">なぜ<span>無料</span>で開催するのか？</h2>
+    <p class="fade-up delay-1">「無料なんて、どうせ売り込まれるんでしょ？」<br>そう思う気持ち、よくわかります。</p>
+    <p class="fade-up delay-2">
+      このイベントで押し売りは一切しません。<br>
+      <strong>本当のAI活用を体験してもらい、「学びたい」と思ってくれた人だけに</strong>コースをご案内します。<br><br>
+      第1期生として、一緒にこのアカデミーを育ててほしいという想いもあります。<br>
+      皆さんの「使えた」「変わった」という声が、次の受講生の希望になる。<br>
+      だから、まず体験してもらうことを最優先にしています。
+    </p>
+    <div class="fade-up delay-3" style="background:white;border-radius:16px;padding:20px 28px;margin-top:28px;text-align:left;display:inline-block;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+      <p style="font-size:13px;font-weight:800;color:#1e3a8a;margin-bottom:12px;">当日やらないこと：</p>
+      <ul style="list-style:none;display:grid;gap:8px;">
+        <li style="font-size:14px;color:#374151;display:flex;gap:8px;align-items:flex-start;"><span style="color:#16a34a;font-weight:900;">✓</span>その場でのお申し込みは不要です</li>
+        <li style="font-size:14px;color:#374151;display:flex;gap:8px;align-items:flex-start;"><span style="color:#16a34a;font-weight:900;">✓</span>後日、一度だけご案内のメールをお送りします</li>
+        <li style="font-size:14px;color:#374151;display:flex;gap:8px;align-items:flex-start;"><span style="color:#16a34a;font-weight:900;">✓</span>それ以降のプッシュ連絡は一切ありません</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 中間CTA -->
+<section class="mid-cta">
+  <h2>まずは無料イベントで体験してみてください</h2>
+  <p>参加費無料・入会義務なし。疑問はすべて当日解消できます。</p>
+  <a href="form.html" class="btn-primary">無料イベントに参加する</a>
 </section>
 
 <!-- 料金 -->
@@ -762,6 +785,7 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
           <li>全講義の録画アーカイブ</li>
           <li>AI活用テンプレート集</li>
         </ul>
+        <a href="form.html" class="btn-primary" style="margin-top:28px;display:flex;font-size:15px;padding:14px 24px;">このプランで申し込む</a>
       </div>
       <div class="price-card best fade-up delay-2">
         <div class="best-inner">
@@ -777,6 +801,7 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
             <li>優先メッセージサポート</li>
             <li>卒業後1ヶ月の継続サポート</li>
           </ul>
+          <a href="form.html" class="btn-primary" style="margin-top:28px;display:flex;font-size:15px;padding:14px 24px;">このプランで申し込む</a>
         </div>
       </div>
     </div>
@@ -816,7 +841,11 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
       <h3 style="color:#fbbf24;font-size:20px;font-weight:900;margin-bottom:28px;">よくある質問</h3>
       <div class="faq-item">
         <div class="faq-q">無料イベントって、結局売り込まれるんじゃないですか？<span class="faq-icon">+</span></div>
-        <div class="faq-a">いいえ。このイベントは「本当のAI活用」を体験していただくことが目的です。コースのご案内はしますが、無理な勧誘は一切行いません。「参加してよかった」と思っていただけるイベントにすることが最優先です。</div>
+        <div class="faq-a">いいえ。このイベントは「本当のAI活用」を体験していただくことが目的です。コースのご案内はしますが、無理な勧誘は一切行いません。後日一度だけご案内のメールをお送りし、それ以降のプッシュ連絡はありません。「参加してよかった」と思っていただけるイベントにすることが最優先です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">イベントはいつ、どこで開催されますか？<span class="faq-icon">+</span></div>
+        <div class="faq-a">オンライン（Zoom）での開催です。所要時間は約90分。日程はお申し込み後にご案内します。スマホ・PCどちらからでも参加できます。</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">AIの知識がゼロでも参加できますか？<span class="faq-icon">+</span></div>
@@ -824,7 +853,7 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
       </div>
       <div class="faq-item">
         <div class="faq-q">忙しくて時間が取れるか不安です。<span class="faq-icon">+</span></div>
-        <div class="faq-a">週1回の発表会も月1回の講義も全て録画があります。リアルタイムで参加できなくても、アーカイブでいつでも追いつけます。</div>
+        <div class="faq-a">週1回の発表会も月1回の講義も全て録画があります。忙しい週はアーカイブで確認するだけでOK。「参加できない＝遅れる」ではなく、自分のペースで進められる設計にしています。</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">分割払いはできますか？<span class="faq-icon">+</span></div>
@@ -832,7 +861,7 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
       </div>
       <div class="faq-item">
         <div class="faq-q">どんな職種・業種でも活用できますか？<span class="faq-icon">+</span></div>
-        <div class="faq-a">はい。会社員・個人事業主・経営者・主婦の方まで様々な方が参加されています。AI活用は業種を選びません。</div>
+        <div class="faq-a">はい。会社員・個人事業主・経営者・主婦・主夫・フリーランスの方まで幅広くご参加いただいています。AI活用は業種を選びません。</div>
       </div>
     </div>
 
@@ -841,17 +870,24 @@ footer { background: #030310; color: rgba(255,255,255,0.3); text-align: center; 
       <h2>10年後の自分に、今日投資する。</h2>
       <p>まずは無料イベントだけでもご参加ください。<br>参加費無料・入会義務なし。疑問はすべて当日解消できます。</p>
       <div style="display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:8px;">
-        <img src="assets/kazu-char-guide2.png" class="char-img" alt="" style="width:100px;height:100px;">
-        <a href="form.html" class="btn-primary large">無料イベントに参加する</a>
-        <img src="assets/kazu-char-guide2.png" class="char-img" alt="" style="width:100px;height:100px;transform:scaleX(-1);">
+        <img src="assets/kazu-char-guide2.png" class="char-img final-cta-char" alt="" style="width:100px;height:100px;">
+        <a href="form.html" class="btn-primary large">今すぐ無料イベントに申し込む</a>
+        <img src="assets/kazu-char-guide2.png" class="char-img final-cta-char" alt="" style="width:100px;height:100px;transform:scaleX(-1);">
       </div>
-      <div class="note">※ 参加費無料 · 入会の義務はありません · 14日間返金保証</div>
+      <div class="note">※ オンライン（Zoom）· 参加費無料 · 入会の義務なし · キャンセル自由</div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2025 AI活用共創アカデミー / nicopan school（オクトウェイ合同会社）</p>
+  <p>© 2026 AI活用共創アカデミー / nicopan school（オクトウェイ合同会社）</p>
+  <p style="margin-top:8px;">
+    <a href="form.html" style="color:rgba(255,255,255,0.4);text-decoration:none;margin:0 10px;">お問い合わせ</a>
+    <span style="color:rgba(255,255,255,0.2)">|</span>
+    <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;margin:0 10px;">プライバシーポリシー</a>
+    <span style="color:rgba(255,255,255,0.2)">|</span>
+    <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;margin:0 10px;">特定商取引法に基づく表記</a>
+  </p>
 </footer>
 
 <script>
@@ -904,7 +940,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
 
 // パーティクル
 const hero = document.getElementById('hero');
-for (let i = 0; i < 24; i++) {
+for (let i = 0; i < 12; i++) {
   const p = document.createElement('div');
   const size = Math.random() * 4 + 1.5;
   p.style.cssText = `
