@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>無料イベント参加申込み | AI活用共創アカデミー</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo', sans-serif; color: #1a1a2e; background: #f8fafc; min-height: 100vh; }
+
+nav {
+  background: rgba(10,10,30,0.97); padding: 14px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-logo { font-size: 15px; font-weight: 800; color: white; }
+.nav-logo span { color: #fbbf24; }
+.nav-back { color: rgba(255,255,255,0.6); font-size: 13px; text-decoration: none; }
+.nav-back:hover { color: white; }
+
+.page-hero {
+  background: linear-gradient(135deg, #0a0a28, #1e3a8a);
+  color: white; text-align: center; padding: 60px 20px 50px;
+}
+.page-hero .badge {
+  display: inline-block; background: rgba(251,191,36,0.15);
+  border: 1px solid rgba(251,191,36,0.4); color: #fbbf24;
+  padding: 6px 18px; border-radius: 50px; font-size: 12px; font-weight: 700;
+  margin-bottom: 20px; letter-spacing: 1px;
+}
+.page-hero h1 { font-size: clamp(24px, 4vw, 38px); font-weight: 900; margin-bottom: 14px; line-height: 1.35; }
+.page-hero p { font-size: 15px; opacity: 0.75; line-height: 1.8; }
+
+.form-wrap { max-width: 640px; margin: -32px auto 60px; padding: 0 20px; }
+.form-card { background: white; border-radius: 24px; padding: 48px 44px; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+
+.benefits { background: #f0f7ff; border-radius: 16px; padding: 24px 28px; margin-bottom: 36px; }
+.benefits h3 { font-size: 15px; font-weight: 800; color: #1e3a8a; margin-bottom: 14px; }
+.benefits ul { list-style: none; display: grid; gap: 10px; }
+.benefits ul li { font-size: 14px; color: #374151; display: flex; gap: 10px; align-items: flex-start; }
+.benefits ul li::before { content: '✓'; color: #2563eb; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+
+.form-group { margin-bottom: 22px; }
+.form-group label { display: block; font-size: 14px; font-weight: 700; color: #374151; margin-bottom: 8px; }
+.form-group label .required { color: #ef4444; margin-left: 4px; font-size: 12px; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 14px 18px; border: 2px solid #e2e8f0; border-radius: 12px;
+  font-size: 15px; color: #1a1a2e; font-family: inherit; transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fafafa;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none; border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); background: white;
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+
+.submit-btn {
+  width: 100%; padding: 18px; border-radius: 60px; border: none; cursor: pointer;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24); color: #1a1a1a;
+  font-size: 18px; font-weight: 900; font-family: inherit;
+  box-shadow: 0 8px 32px rgba(251,191,36,0.4); transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.submit-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(251,191,36,0.5); }
+.submit-btn::after { content: '→'; font-size: 1.2em; }
+
+.form-note { text-align: center; font-size: 12px; color: #94a3b8; margin-top: 16px; line-height: 1.7; }
+.guarantee-line { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 24px; font-size: 13px; color: #64748b; }
+.guarantee-line::before { content: '🔒'; }
+
+footer { background: #050510; color: rgba(255,255,255,0.35); text-align: center; padding: 28px 20px; font-size: 12px; }
+
+@media (max-width: 640px) {
+  .form-card { padding: 32px 24px; }
+  .page-hero { padding: 50px 16px 40px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">AI活用<span>共創</span>アカデミー</div>
+  <a href="index.html" class="nav-back">← LPに戻る</a>
+</nav>
+
+<div class="page-hero">
+  <div class="badge">🔥 参加費無料 · 入会義務なし</div>
+  <h1>無料イベントに<br>参加する</h1>
+  <p>疑問はすべて当日解消できます。<br>まずは気軽にご参加ください。</p>
+</div>
+
+<div class="form-wrap">
+  <div class="form-card">
+
+    <div class="benefits">
+      <h3>無料イベントで得られること</h3>
+      <ul>
+        <li>「チャット止まり」から抜け出すAI活用の全体像がわかる</li>
+        <li>あなたの仕事で今すぐ使えるAI活用事例を知れる</li>
+        <li>1,000万円の差が生まれる仕組みを数字で理解できる</li>
+        <li>アカデミーの内容・料金・スケジュールをすべて確認できる</li>
+      </ul>
+    </div>
+
+    <form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="_blank">
+
+      <div class="form-group">
+        <label>お名前<span class="required">*必須</span></label>
+        <input type="text" name="entry.name" placeholder="山田 太郎" required>
+      </div>
+
+      <div class="form-group">
+        <label>メールアドレス<span class="required">*必須</span></label>
+        <input type="email" name="entry.email" placeholder="example@gmail.com" required>
+      </div>
+
+      <div class="form-group">
+        <label>職業・肩書き</label>
+        <select name="entry.job">
+          <option value="">選択してください</option>
+          <option value="会社員">会社員</option>
+          <option value="個人事業主・フリーランス">個人事業主・フリーランス</option>
+          <option value="経営者・役員">経営者・役員</option>
+          <option value="主婦・主夫">主婦・主夫</option>
+          <option value="学生">学生</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>気になるコース</label>
+        <select name="entry.course">
+          <option value="">選択してください</option>
+          <option value="グループコース（99,800円）">グループコース（99,800円）</option>
+          <option value="マンツーマン付きコース（298,000円）">マンツーマン付きコース（298,000円）</option>
+          <option value="まだ決めていない">まだ決めていない</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>AIについて今感じていること・質問があれば</label>
+        <textarea name="entry.message" placeholder="例：ChatGPTは使っているけど業務にうまく活用できていない、など"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">無料イベントに参加する</button>
+
+      <p class="form-note">
+        ご入力いただいた情報は、イベントのご案内にのみ使用します。<br>
+        第三者への提供・営業目的での使用は一切行いません。
+      </p>
+      <div class="guarantee-line">参加費無料 · 入会の義務はありません · いつでも退会できます</div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 AI活用共創アカデミー / nicopan school（オクトウェイ合同会社）</p>
+</footer>
+
+</body>
+</html>
