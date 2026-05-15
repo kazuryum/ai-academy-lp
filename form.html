@@ -103,7 +103,7 @@ footer { background: #050510; color: rgba(255,255,255,0.35); text-align: center;
       </ul>
     </div>
 
-    <form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="_blank">
+    <form id="applyForm">
 
       <div class="form-group">
         <label>お名前<span class="required">*必須</span></label>
@@ -143,7 +143,7 @@ footer { background: #050510; color: rgba(255,255,255,0.35); text-align: center;
         <textarea name="entry.message" placeholder="例：ChatGPTは使っているけど業務にうまく活用できていない、など"></textarea>
       </div>
 
-      <button type="submit" class="submit-btn">無料イベントに参加する</button>
+      <button type="submit" class="submit-btn" id="submitBtn">無料イベントに参加する</button>
 
       <p class="form-note">
         ご入力いただいた情報は、イベントのご案内にのみ使用します。<br>
@@ -158,5 +158,46 @@ footer { background: #050510; color: rgba(255,255,255,0.35); text-align: center;
   <p>© 2025 AI活用共創アカデミー / nicopan school（オクトウェイ合同会社）</p>
 </footer>
 
+<script>
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbxY1R30q0U-BJ9cU7JCd6eUWgP1I95vPz1oqLgkaNCdYSRiheTqopHXRlANAfr0W-dl/exec';
+
+document.getElementById('applyForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = '送信中...';
+  btn.disabled = true;
+
+  const data = {
+    name: this.querySelector('[name="entry.name"]').value,
+    email: this.querySelector('[name="entry.email"]').value,
+    job: this.querySelector('[name="entry.job"]').value,
+    course: this.querySelector('[name="entry.course"]').value,
+    message: this.querySelector('[name="entry.message"]').value
+  };
+
+  try {
+    await fetch(GAS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    document.querySelector('.form-card').innerHTML = `
+      <div style="text-align:center;padding:48px 0;">
+        <div style="font-size:64px;margin-bottom:24px;">🎉</div>
+        <h2 style="font-size:26px;font-weight:900;color:#1e3a8a;margin-bottom:16px;">お申し込みありがとうございます！</h2>
+        <p style="color:#64748b;font-size:16px;line-height:1.9;">
+          ご登録いただいたメールアドレスに<br>詳細をお送りします。<br><br>
+          しばらくお待ちください。
+        </p>
+        <a href="index.html" style="display:inline-block;margin-top:32px;color:#2563eb;font-weight:700;text-decoration:none;">← LPに戻る</a>
+      </div>`;
+  } catch(err) {
+    btn.textContent = '無料イベントに参加する';
+    btn.disabled = false;
+    alert('送信に失敗しました。もう一度お試しください。');
+  }
+});
+</script>
 </body>
 </html>
